@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML/CSS Generator</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="javascript/html.js" defer></script>
+  <script src="javascript/index.js" defer></script>
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">© Jessi Dion</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Generator</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="generation.html">→ Généré</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <h1>HTML Generator</h1>
+  <div class="row" id="cards-container">
+    
+  </div>
+</div>
+
+<form class="container my-4 border border-light-subtle rounded d-flex justify-content-center">
+<div class="d-flex flex-column pr-5">
+
+  <h2 class="pt-5">Licence</h2>
+
+  <label for="licence"># Licence: *</label>
+  <input id="licence" name="licence" type="text" required pattern="^[A-Z\d]{4}-[A-Z\d]{4}-[A-Z\d]{4}$" placeholder="HHHH-HHHH-HHHH">
+
+  <a href="licence.html" class="mt-1">Pas de licence? Achetez-en une!</a>
+  <p id="erreurLicence"></p>
+
+
+
+  <h2 class="pt-4">Base</h2>
+
+  <!-- Plusieurs choix de balises! Vraiment cool -->
+  <label for="typebalise" class="pt-1">Balise:</label>
+  <select id="typebalise" name="typebalise" class="pl-1">
+    <option value="div">Div</option>
+    <option value="p">Paragraph (P)</option>
+    <option value="h1">Level 1 Header (H1)</option>
+    <option value="h2">Level 2 Header (H2)</option>
+    <option value="h3">Level 3 Header (H3)</option>
+    <option value="h4">Level 4 Header (H4)</option>
+    <option value="h5">Level 5 Header (H5)</option>
+    <option value="h6">Level 6 Header (H6)</option>
+    <option value="span">Span (Inline)</option>
+    <option value="a">Anchor (A)</option>
+    <option value="img">Image (Img)</option>
+    <option value="ul">Unordered List (UL)</option>
+    <option value="ol">Ordered List (OL)</option>
+    <option value="li">List Item (LI)</option>
+    <option value="table">Table</option>
+    <option value="tr">Table Row (TR)</option>
+    <option value="th">Table Header (TH)</option>
+    <option value="td">Table Data (TD)</option>
+    <option value="form">Form</option>
+    <option value="input">Input</option>
+    <option value="button">Button</option>
+    <option value="textarea">Textarea</option>
+  </select>
+  
+
+  <label for="contenu" class="pt-3">Contenu:</label>
+  <input id="contenu" name="contenu" type="text" placeholder="Bonjour le monde!">
+
+  <div>
+  <!-- <input type="submit" value="Generate" class="btn btn-primary mt-5 px-5"> -->
+  <button type="button" onclick="validation()" class="btn btn-primary mt-5 px-5">Generate</button>
+  <input type="reset" value="Reset" class="btn btn-secondary mt-5 px-5">
+  </div>
+
+ 
+  <label for="" class="py-1"></label>
+
+</div>
+
+
+<div class="d-flex flex-column pl-5">
+
+  <h2 class="pt-5">Style</h2>
+
+
+<div>
+  <label for="couleurcontenu">Couleur contenu:</label> <br>
+  <input type="color" id="couleurcontenu" name="couleurcontenu" value="#ffffff;"> 
+  <img src="img/preview_contentcolor.jpg" class="mb-2 ml-3" style="width: 3rem; border: 1px solid black;" alt="preview">
+</div>
+
+<div>
+  <label for="backgroundcolor" class="pt-3">Couleur background:</label> <br>
+  <input id="backgroundcolor" name="backgroundcolor" type="color"> 
+  <img src="img/preview_backgroundcolor.jpg" class="mb-2 ml-3" style="width: 3rem; border: 1px solid black;" alt="preview">
+</div>
+
+<div>
+  <label for="backgroundimageurl" class="pt-3">Image background (url):</label> <br>
+  <input id="backgroundimageurl" name="backgroundimageurl" type="text" pattern="^http.*\.(jpg|png)$" placeholder="https://site.com/image.jpg"> 
+  <img src="img/preview_backgroundurl.jpg" class="mb-2 ml-3" style="width: 3rem; border: 1px solid black;" alt="preview">
+</div>
+
+<div>
+  <label for="padding" class="pt-3">Padding (rem):</label> <br>
+  <input type="number" id="padding" name="padding" min="0" max="9999" placeholder="0" step="0.5">
+  <img src="img/preview_padding.jpg" class="mb-2 ml-3" style="width: 3rem; border: 1px solid black;" alt="preview">
+</div>
+
+<label for="stylecustom" class="pt-3">Style custom (css):</label>
+<textarea id="stylecustom" name="stylecustom" rows="4" placeholder="display: block;
+margin-left: 5px;"></textarea>
+
+
+
+
+ <label for="" class="py-1"></label>
+
+</div>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+#licence:valid{
+    border-color: rgb(0, 255, 85);
+}
+#licence:invalid{
+    border-color: rgb(255, 0, 0);
+}
+#backgroundcolor:invalid{
+    border-color: rgb(255, 0, 0);
+}
+#erreurLicence{
+    color: red;
+}

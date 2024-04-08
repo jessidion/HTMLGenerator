@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML/CSS Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="javascript/resultat.js" defer></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">© Jessi Dion</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Generator</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="generation.html">→ Généré</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-m mt-4 row d-flex justify-content-center">
+    <h1 class="col-12 d-flex justify-content-center">HTML Généré</h1>
+    <div class="col-6 d-flex justify-content-center">
+      <div class="container d-flex row justify-content-center">
+          <div class="row pt-3" id="cards-container">
+          </div>
+          <button type="button" class="p-2 px-5" onclick="copier()">Copier</button>
+      </div>
+    </div>
+</div>
+<div class="container-m d-flex justify-content-center flex-column pt-5">
+  <h1 style="align-self: center; padding-bottom: 1rem;">Preview</h1>
+  <div class="container-m border border-light-subtle d-flex justify-content-center" id="preview-container">
+
+  </div>
+</div>
+</body>
+</html>
+<body>
