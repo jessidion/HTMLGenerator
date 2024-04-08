@@ -1,4 +1,4 @@
-
+// Création de mon nouvel objet de type HTML
 const objetHTML = [
     new HTML(findElementVal("typebalise"), findElementVal("contenu"), findElementVal("backgroundimageurl"), findElementVal("backgroundcolor"), findElementVal("couleurcontenu"), findElementVal("padding"), findElementVal("stylecustom"))
 ];
@@ -11,7 +11,7 @@ function findElementVal(nom) {
 
 
 
-// Mini intro infortatif qui apparait toujours sur la page principale du générateur
+// Mini intro informatif qui apparaît toujours sur la page principale du générateur
 alert("Bienvenu chez HTML Generator ! Entrez simplement les paramètres désirés afin de générer votre balise/code HTML!");
 
 
@@ -27,7 +27,7 @@ function validation(){
         return; // invalide so bye
     }
     $(erreurLicence).text("");
-    // Tout est good, on generate
+    // Tout est good, on génère
     generate();
 };
 

@@ -27,8 +27,6 @@ function achat() {
 }
 
 
-
-
 // Ma liste pour stocker les items crées pour différencier de ceux déjà sur MockAPI
 const licencesLocal = [
 
@@ -68,7 +66,7 @@ function ajouter(){
 
 
 
-/// Pour append un item sans le bouton supprimer
+/// Pour append et afficher un item SANS le bouton supprimer
 function creerCarte(licence){
     $('#licences').append(`<li class="card col-3 m-2" style="width: 18rem;">
   <div class="card-body">
@@ -84,7 +82,7 @@ function creerCarte(licence){
 
 
 
-/// Pour append un item avec le bouton supprimer
+/// Pour append et afficher un item AVEC le bouton supprimer
 function creerCarteAdmin(licence){
     $('#licences').append(`<li class="card col-3 m-2" style="width: 18rem;">
   <div class="card-body">
@@ -103,6 +101,8 @@ function creerCarteAdmin(licence){
 
 /// Fonction pour supprimer un item de mockAPI et local list
 function supprimer(id){
+    let confirmation = confirm("Êtes-vous certain de vouloir supprimer cet item?");
+    if (!confirmation) return;
     fetch('https://660c05393a0766e85dbd2d6e.mockapi.io/html/licence/'+id, {
         method: 'DELETE',
         headers: {'content-type':'application/json'},
@@ -115,41 +115,44 @@ function supprimer(id){
         // Do something
         //location.reload();
         AdminFetch();
-        licencesLocal = licencesLocal.filter(li => !li.equals(licence.nom)); // On supprime si nous l'avons localement
+        licencesLocal.filter(li => li.nom !== licence.nom); // On supprime si nous l'avons localement
     }).catch(error => {
         // handle error
-        $('.alert').text(error.message).removeClass('d-none');
+        //$('.alert').text(error.message).removeClass('d-none');
     })
     alert("Supprimé avec succès !");
 }
 
 
 
+let firstLoad = true;
 // facon jQuery pour fetch les items de MockAPI
-fetch('https://660c05393a0766e85dbd2d6e.mockapi.io/html/licence', {
-    method: 'GET',
-    headers: {'content-type':'application/json'},
-}).then(res => {
-    if (res.ok) {
-        return res.json();
-    }
-    // handle error
-}).then(tasks => {
-    // Do something with the list of tasks
-    tasks.forEach(function(licence){
-        creerCarte(licence);
+if(firstLoad) {
+    fetch('https://660c05393a0766e85dbd2d6e.mockapi.io/html/licence', {
+        method: 'GET',
+        headers: {'content-type':'application/json'},
+    }).then(res => {
+        if (res.ok) {
+            return res.json();
+        }
+        // handle error
+    }).then(tasks => {
+        // Do something with the list of tasks
+        tasks.forEach(function(licence){
+            creerCarte(licence);
+        })
+    }).catch(error => {
+        // handle error
     })
-}).catch(error => {
-    // handle error
-})
-
+firstLoad = false;
+}
 
 
 
 /// Méthode un peu différente du fetch initial qui affiche les items locaux avec un bouton supprimer
 function AdminFetch() {
 //$("#titre").text("Acheter Une Licence (vue d'administrateur)");
-$('#licences').empty()
+$("#licences").empty();
 
 fetch('https://660c05393a0766e85dbd2d6e.mockapi.io/html/licence', {
     method: 'GET',

@@ -1,4 +1,4 @@
-
+// Cette class est utiliser lors de la génération et sauvegarde de code html
 class HTML {
     constructor(typebalise, contenu, backgroundimageurl, backgroundcolor, couleurcontenu, padding, stylecustom) {
         this.typebalise = typebalise; /* div, p, h1, ect..  */
